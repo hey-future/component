@@ -12,6 +12,7 @@ Vue 3 + TypeScript + Vite
 | **Node版本管理**         | NVM                                                       | [下载地址](https://github.com/coreybutler/nvm-windows/releases)           |
 | **运行环境**         | Node 16+                                                     | [下载地址](http://nodejs.cn/download)
 
+
 ## 代码下载
 
 开发工具代码下载 [developerDesign.zip](http://nodejs.cn/download)    
@@ -43,17 +44,19 @@ npm run dev
 |  index.vue  | 组件展示vue文件 |
 |  config.vue | 组件配置vue文件 |
 |  config.ts  | 组件属性配置文件 |
-
+设计器组件widgets属性结构
+![Image text](/public/static/images/readme/1.png)
 ## 发布组件
 ### 1.组件打包
 当组件开发完成后，需要将其打包后上传到gis组件管理上使用，执行以下命令开始打包组件
-组件打包前需要根据开发的组件代码位置对应修改下pack.config.ts文件
+组件打包前需要根据开发的组件代码位置对应修改下pack.config.ts文件里的 entry【入库文件地址】 和 name【组件名称】属性
 ```
   outDir: 'lib/BarCommon', // 组件打包输出的文件目录
   lib: {
     // 开发的组件文件打包入口
     entry: pathResolve('src/packages/components/Charts/Bars/BarCommon/index.ts'),
     formats: ['iife'],
+    // 组件名称
     name: 'BarCommon',
     fileName: () => 'index.js'
   }
