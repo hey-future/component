@@ -147,3 +147,11 @@ import '@/DmsDesign/style.css'
 ```
 npm run pack
 ```
+### 2.上传组件
+将打包后的组件文件压缩到zip文件中，上传到gis后台管理中的组件管理上
+zip压缩包文件结构如下
+组件.zip
+  -  index.js (组件代码文件)
+  -  index.png (组件封面图片)
+
+![Image text](/public/static/images/readme/2.png)
