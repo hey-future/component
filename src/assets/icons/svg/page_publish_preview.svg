@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20" fill="none">
+<rect x="2" y="2" width="16" height="12" stroke="rgba(70, 90, 145, 1)" stroke-width="1.67"   >
+</rect>
+<path    stroke="rgba(70, 90, 145, 1)" stroke-width="1.67"    d="M10 14L10 18">
+</path>
+<path d="M8.5 5L8.5 11L12.5 8L8.5 5Z"   fill="#376AF5" >
+</path>
+<path    stroke="rgba(70, 90, 145, 1)" stroke-width="1.67"    d="M5 18L15 18">
+</path>
+</svg>

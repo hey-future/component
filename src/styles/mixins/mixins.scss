@@ -1,0 +1,20 @@
+$namespace: 'dms';
+$main-color: #0C63EE;
+
+@mixin dms($block) {
+  $B: $namespace + '-' + $block;
+  .#{$B} {
+    @content;
+  }
+}
+
+//获取颜色
+@mixin fetch-color($target) {
+  color: var('--'+$target);
+}
+
+@mixin deep() {
+  :deep() {
+    @content;
+  }
+}
