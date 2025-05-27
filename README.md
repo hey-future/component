@@ -15,7 +15,7 @@ Vue 3 + TypeScript + Vite
 
 ## 代码下载
 
-开发工具代码下载 [developerDesign.zip](http://nodejs.cn/download)    
+git clone https://github.com/hey-future/component.git 
 
 ## 项目运行
 ```bash
@@ -27,7 +27,90 @@ npm run dev
 
 ```
 ## 开发组件
-### 1. 组件目录规范
+### 1. 大屏设计器页面示例
+引入设计器组件
+```
+import { Design } from '@/DmsDesign/index.js'
+import '@/DmsDesign/style.css'
+```
+设计器组件props属性说明 设计器组件widgets属性结构
+![Image text](/public/static/images/readme/1.png)
+
+完整示例代码如下
+```
+<template>
+  <div class="page">
+    <Design :widgets="widgets" />
+  </div>
+</template>
+<script setup lang="ts">
+import { Design } from '@/DmsDesign/index.js'
+import '@/DmsDesign/style.css'
+const widgets = [
+  {
+    name: "图表",
+    icon: 'chart',
+    widgetPackage: 'Charts',
+    childList: [
+      {
+        name: "柱状图",
+        parentId: 1,
+        category: "Bars",
+        categoryName: "柱状图",
+        categoryIcon: "icon-barchart",
+        widgetPackage: "Charts",
+        widgets: [
+          {
+            title: "柱状图",
+            type: 1, // 组件类型 1本地组件 2 远程组件
+            path: '', // 组件类型=2是有效
+            key: 'BarCommon', // 组件唯一标识
+            widgetKey: "BarCommon",
+            chartKey: "VBarCommon", // 展示区组件的key
+            conKey: "VCBarCommon", // 配置区域组件的key
+            widgetPackage: "Charts", // 组件一级分类文件夹名 （基于src/packages目录下的层级）
+            category: "Bars", // 组件二级分类文件夹名 基于src/packages目录下的层级）
+            categoryName: "柱状图", // 组件二级分类名称
+            chartFrame: "echarts", // 图表框架类型 echarts、 common 、static
+            image: "barchart_x.png" // 组件封面缩略图地址 如果组件type=1的情况下,封面图片放在 public/static/images/widget 目录下  type=2的情况下,封面图片放在 组件配置的path属性目录下
+          }
+        ]
+      }
+    ]
+  }
+]
+</script>
+<style scoped>
+.page {
+  width: 100%;
+  height: 100%;
+}
+</style>
+```
+
+### 2. 大屏预览页面示例
+完整示例代码如下
+```
+<template>
+  <div class="page">
+    <Preview />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { Preview } from '@/DmsDesign/index.js'
+import '@/DmsDesign/style.css'
+</script>
+<style scoped>
+.page {
+  width: 100%;
+  height: 100%;
+}
+</style>
+```
+
+
+### 3. 组件目录规范
 所有的组件文件都放在src/packages/components目录下
 每个组件必须包含以下文件
 组件目录名按照在/src/views/index/index.vue 中配置的widgets属性数据中的层级结构目录创建
@@ -44,8 +127,7 @@ npm run dev
 |  index.vue  | 组件展示vue文件 |
 |  config.vue | 组件配置vue文件 |
 |  config.ts  | 组件属性配置文件 |
-设计器组件widgets属性结构
-![Image text](/public/static/images/readme/1.png)
+
 ## 发布组件
 ### 1.组件打包
 当组件开发完成后，需要将其打包后上传到gis组件管理上使用，执行以下命令开始打包组件
