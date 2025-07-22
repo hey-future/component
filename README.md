@@ -128,6 +128,49 @@ import '@/DmsDesign/style.css'
 |  config.vue | 组件配置vue文件 |
 |  config.ts  | 组件属性配置文件 |
 
+### 3. 组件数据双向绑定
+组件数据双向绑定，组件配置文件 config.ts 中定义的属性，组件展示文件 index.vue 中通过 props接收chartConfig属性获取属性值进行数据绑定。
+配置文件 config.vue 中数据绑定通过props接收optionData属性获取属性值进行数据绑定。
+示例代码:
+index.vue
+```
+<template>
+  <div>
+    {{ chartConfig.option.name }}
+  </div>
+</template>
+<script setup lang="ts">
+const props = defineProps({
+  chartConfig: {
+    type: Object,
+    required: true
+  }
+})
+</script>
+```
+config.vue
+```
+<template>
+  <div>
+    <div>配置内容</div>
+    <el-input v-model="optionData.name" placeholder="请输入内容" />
+  </div>
+</template>
+<script setup lang="ts">
+const props = defineProps({
+  optionData: {
+    type: Object,
+    required: true
+  },
+  targetId: {
+    type: String,
+    required: false,
+    default: ''
+  }
+})
+</script>
+```
+
 ## 发布组件
 ### 1.组件打包
 当组件开发完成后，需要将其打包后上传到gis组件管理上使用，执行以下命令开始打包组件
